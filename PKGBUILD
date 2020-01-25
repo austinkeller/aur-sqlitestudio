@@ -26,13 +26,17 @@ makedepends=(
   qt5-tools
 )
 source=(
-  http://sqlitestudio.pl/files/sqlitestudio${_pkgver}/complete/tar/sqlitestudio-$pkgver.tar.gz
+  https://github.com/pawelsalawa/sqlitestudio/archive/${pkgver}.tar.gz
   sqlitestudio.desktop
 )
-sha256sums=('b0f9e79bb97ecd2cf1196d6d2fa4f3afb16b24b7efa67fa2ec3d7373046339c0'
+noextract=(
+  "${pkgver}.tar.gz"
+)
+sha256sums=('1599046368ab0f11974d9fc7f10cdfc30ca08a7dc6767610b5aa0be26715dc1d'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 prepare(){
   cd "$srcdir"
+  tar -xf ${pkgver}.tar.gz --strip-components=1
 }
 build(){
   cd "$srcdir"
